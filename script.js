@@ -1,7 +1,7 @@
 //Runs once at the beginning
 //Runs once at the beginning
 function setup() {
-  var googleSheetLink = "https://docs.google.com/spreadsheets/d/1-j_uXJGA-zFYFGQ0fVWdc7iCkXFC3gJyRm6Vli4HRVQ/edit?usp=sharing";
+  var googleSheetLink = "https://docs.google.com/spreadsheets/d/1qQv2QPGrn_Z7h5LdJK6miDMPgboOXcXs_BsW7h6hbag/edit?usp=sharing";
   trivia.loadGoogleSheet(googleSheetLink).then(displayWelcome); 
 }
 
@@ -38,8 +38,16 @@ function displayThankyou() {
 }
 
 function onClickedAnswer(isCorrect) {
-  if (isCorrect) $("#feedback").html(`Way to go!`).show();
-  else $("#feedback").html(`Better luck next time.`).show();
+  var soundCorrect = new Audio("sounds/sound_correct.mp3");
+  var soundIncorrect = new Audio("sounds/sound_incorrect.mp3");
+  if (isCorrect) {
+    $("#feedback").html(`Way to go!`).show();
+    soundCorrect.play();
+  }
+  else {
+    $("#feedback").html(`Better luck next time.`).show();
+    soundIncorrect.play();
+    }
   $("#incorrectAnswer1").addClass("highlightWrong"); //highlight incorrect answers red 1/3
   $("#incorrectAnswer2").addClass("highlightWrong"); // 2/3
   $("#incorrectAnswer3").addClass("highlightWrong"); // 3/3
