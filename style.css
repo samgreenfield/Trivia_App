@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  background-color: gray;
+  background-color: #CBE4F9;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .screen {
   background-color: rgba(255,255,255,.5);
@@ -15,11 +16,11 @@ h1, h4 {
   text-align: center;
 }
 button {
-  background-color: rgba(255,255,255,.7);
+  background-color: hex(#76a3c7);
   border: none;
   outline: none;
   border-radius: 19px;
-  box-shadow: 3px 3px 7px black;
+  box-shadow: 3px 3px 7px rgb(76, 148, 207);
   font-size: 24px;
   display: block;
   margin: 10px auto;
@@ -27,8 +28,12 @@ button {
   width: 100%;
 }
 .highlight {
-  background-color: green;
+  background-color: #80e680;
   color: white;
+}
+.highlightWrong {
+  background-color: #ce7474;
+  color: white
 }
 canvas {
   min-width: 100vw;

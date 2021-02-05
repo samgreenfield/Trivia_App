@@ -7,11 +7,11 @@ function setup() {
 
 //Loops continously for background effects and animations. (p5.js)
 function draw() {
-  if (trivia.state == "welcome") background("yellow");
-  else if (trivia.state == "question") background("lightblue");
-  else if (trivia.state == "correct") background("green");
-  else if (trivia.state == "incorrect") background("red");
-  else if (trivia.state == "thankyou") background("orange");
+  if (trivia.state == "welcome") background("#85E3FF");
+  else if (trivia.state == "question") background("#AFCBFF");
+  else if (trivia.state == "correct") background("#BFFCC6");
+  else if (trivia.state == "incorrect") background("#FFABAB");
+  else if (trivia.state == "thankyou") background("#E8B08D");
 }
 
 function displayWelcome() {
@@ -25,6 +25,9 @@ function displayQuestion() {
   trivia.insertQuestionInfo();
   trivia.shuffleAnswers();
   $("#correctAnswer").removeClass("highlight");
+  $("#incorrectAnswer1").removeClass("highlightWrong"); //unhighlight incorrect answers 1/3
+  $("#incorrectAnswer2").removeClass("highlightWrong"); // 2/3
+  $("#incorrectAnswer3").removeClass("highlightWrong"); // 3/3
   $("#feedback").hide();
 }
 
@@ -37,6 +40,9 @@ function displayThankyou() {
 function onClickedAnswer(isCorrect) {
   if (isCorrect) $("#feedback").html(`Way to go!`).show();
   else $("#feedback").html(`Better luck next time.`).show();
+  $("#incorrectAnswer1").addClass("highlightWrong"); //highlight incorrect answers red 1/3
+  $("#incorrectAnswer2").addClass("highlightWrong"); // 2/3
+  $("#incorrectAnswer3").addClass("highlightWrong"); // 3/3
   $("#correctAnswer").addClass("highlight"); //highlight right answer
   setTimeout(trivia.gotoNextQuestion, 500); //wait 0.5 secs...next question
 }
