@@ -17,12 +17,17 @@ function draw() {
 function displayWelcome() {
   $(".screen").hide();
   $("#welcome-screen").show();
+  $('#welcome-image').html(`<img src='pictures/0.jpeg'</img>`);
 }
 
 function displayQuestion() {
   $(".screen").hide();
   $("#question-screen").show();
   trivia.insertQuestionInfo();
+  if (trivia.currentQuestion.image)
+    $('#image-holder').html(`<img src='${trivia.currentQuestion.image}'</img>`);
+  else 
+    $('#image-holder').html(``);
   trivia.shuffleAnswers();
   $("#correctAnswer").removeClass("highlight");
   $("#incorrectAnswer1").removeClass("highlightWrong"); //unhighlight incorrect answers 1/3
